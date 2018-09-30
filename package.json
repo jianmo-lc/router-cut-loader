@@ -1,6 +1,6 @@
 {
   "name": "router-cut-loader",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a webpack loader simplifying router config to shorten bundle time.",
   "main": "src/index.js",
   "keywords": ["webpack", "loader", "vue-router"],
