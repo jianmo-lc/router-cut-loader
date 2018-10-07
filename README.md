@@ -1,3 +1,47 @@
+## Aim of the loader
+Let's say you have a vue project with router configuration bellow:
+```js
+  [
+    {
+      path: '/module_1/page_1',
+      component: component_11
+    },
+    {
+      path: '/module_1/page_2',
+      component: component_12
+    },
+    ...
+    {
+      path: '/module_1/page_n',
+      component: component_1n
+    },
+    {
+      path: '/module_2/page_1',
+      component: component_21
+    }
+    {
+      path: '/module_2/page_2',
+      component: component_22
+    },
+    ...
+    {
+      path: '/module_2/page_n',
+      component: component_2n
+    }
+  ]
+```
+You are now working on 'module_1', but every time you want to re-build the project in development, you have to re-bulid the 'module_2' as well, which wastes a lot of time. So we want to eliminate modules we don't care right now in development. This loader can help you with loader options bellow:
+```js
+  options: {
+    all: false,
+    include: [
+      'module_1'
+    ]
+  }
+```
+With the configuation, the loader will retain the router object whose path starts with 'module_1', and ignore the rest as if they never exist. Obviously, the lesser router object, the shorter time cost in building.
+
+
 ## install
 
 `
