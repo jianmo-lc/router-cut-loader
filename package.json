@@ -1,6 +1,6 @@
 {
   "name": "router-cut-loader",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "a webpack loader simplifying router config to shorten bundle time.",
   "main": "src/index.js",
   "keywords": ["webpack", "loader", "vue-router"],
@@ -9,9 +9,9 @@
   "dependencies": {
     "loader-utils": "^1.1.0"
   },
-  "homepage": "https://github.com/uleec/router-cut-loader",
+  "homepage": "https://github.com/lichao0202/router-cut-loader",
   "repository": {
     "type" : "git",
-    "url" : "https://github.com/uleec/router-cut-loader"
+    "url" : "https://github.com/lichao0202/router-cut-loader"
   }
 }
