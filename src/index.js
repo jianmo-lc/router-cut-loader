@@ -1,3 +1,4 @@
+const fs = require('fs')
 const loaderUtils = require('loader-utils')
 const getOptions = loaderUtils.getOptions
 
@@ -6,6 +7,7 @@ module.exports = function loader(source) {
   if (!options) return source
   const allLoad = !!options.all
   const include = options.include
+  const printPath = options.printPath
   if (allLoad) return source
   if (!include || (include && !include.length)) {
     throw new Error('router-cut-loader options require a none empty "include" array if "all" set to false.')
@@ -53,6 +55,9 @@ module.exports = function loader(source) {
         break
     }
     match = reg.exec(noCommentSource)
+  }
+  if (printPath) {
+    fs.writeFileSync(printPath, noCommentSourceCopy)
   }
   return noCommentSourceCopy
 }
