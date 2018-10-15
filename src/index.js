@@ -1,6 +1,7 @@
 const fs = require('fs')
 const loaderUtils = require('loader-utils')
 const getOptions = loaderUtils.getOptions
+const startTIme = +new Date()
 
 module.exports = function loader(source) {
   const options = getOptions(this)
@@ -8,6 +9,7 @@ module.exports = function loader(source) {
   const allLoad = !!options.all
   const include = options.include
   const printPath = options.printPath
+  const showTimeCost = options.showTimeCost
   if (allLoad) return source
   if (!include || (include && !include.length)) {
     throw new Error('router-cut-loader options require a none empty "include" array if "all" set to false.')
@@ -57,8 +59,13 @@ module.exports = function loader(source) {
     match = reg.exec(noCommentSource)
   }
   if (printPath) {
-    fs.writeFileSync(printPath, noCommentSourceCopy)
+    fs.writeFile(printPath, noCommentSourceCopy, (err) => {
+      const message = err || `Router configuration after shifting has been written to file ${printPath}`
+      console.log('router-cut-loader: ', message)
+    })
   }
+  const endTime = +new Date()
+  if (showTimeCost) console.log(`router-cut-loader time cost: ${endTime - startTIme}ms`)
   return noCommentSourceCopy
 }
 
