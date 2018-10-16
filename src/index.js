@@ -1,7 +1,8 @@
 const fs = require('fs')
 const loaderUtils = require('loader-utils')
+
+const startTime = +new Date()
 const getOptions = loaderUtils.getOptions
-const startTIme = +new Date()
 
 module.exports = function loader(source) {
   const options = getOptions(this)
@@ -65,7 +66,7 @@ module.exports = function loader(source) {
     })
   }
   const endTime = +new Date()
-  if (showTimeCost) console.log(`router-cut-loader time cost: ${endTime - startTIme}ms`)
+  if (showTimeCost) console.log(`router-cut-loader time cost: ${endTime - startTime}ms`)
   return noCommentSourceCopy
 }
 

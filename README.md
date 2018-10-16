@@ -78,6 +78,7 @@ name|type|default|description
 all|Boolean|true|load all router components or not, if set to true, the include config below will be ignored.
 include|Array of string|[]|the item of the array is the first word of router path, if all is set to true, this will be ignored.
 printPath|String|''|Absolute path to print out the router configuration after shifting, file name must be contained in the path. Not required.
+showTimeCost|Boolean|false|Print out milliseconds the loader cost. Not required.
 
 ## notice
 
