@@ -45,8 +45,8 @@ module.exports = function loader(source) {
         startMatch = braceStack.pop()
         endMatch = match
         const subStr = noCommentSource.substring(startMatch.index, endMatch.index + 1)
-        const pathMatch = subStr.match(/path\s*?:[\S\s]+?,/g)
-        const componentMatch = subStr.match(/component\s*?:[\S\s]+?,/g)
+        const pathMatch = subStr.match(/path\s*?:/g)
+        const componentMatch = subStr.match(/component\s*?:/g)
         // make sure that the matched string has path and component
         if (pathMatch && componentMatch) {
           const firstWordOfPath = subStr.match(/path\s*?:\s*?['"]\/(\S*?)['"/]/)[1]
